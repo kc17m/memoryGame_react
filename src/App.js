@@ -2,6 +2,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import SingleCard from './components/SingleCard';
+import BasicModal from './components/BasicModal';
+
+
 
 //cards array as global constant, of src objects with card file name, to be used globally throughout this app:
 const cardImages = [
@@ -20,6 +23,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null) //will be updated with the card user choses
   const [choiceTwo, setChoiceTwo] = useState(null)
   const [disabled, setDisabled] = useState(false) //to set timeout between attempts
+  const [matches, setMatches] = useState(0)
 
   //duplicate each card once: 12 cards in total
   //then randomize order of these cards
@@ -52,11 +56,16 @@ function App() {
     
     if (choiceOne && choiceTwo) {
        setDisabled(true)
+       
 
        if (choiceOne.src === choiceTwo.src) {
+             console.log("match!")
+             setMatches(prevMatches => prevMatches + 1)
+             console.log("matches nr", matches)
          setCards(prevCards => {
           return prevCards.map(card => {
             if (card.src === choiceOne.src) {
+              
               return {...card, matched: true}
             } else {
               return card
@@ -81,6 +90,8 @@ function App() {
     setTurns(prevTurns => prevTurns + 1)
     setDisabled(false)
   }
+  
+
 
 
   return (
@@ -100,6 +111,7 @@ function App() {
         ) )}
       </div>
       <p>Turns: {turns}</p>
+      {matches === 6 && <BasicModal turns={turns} />}
       
     </div>
   );

@@ -3,7 +3,7 @@ import "./SingleCard.css";
 const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
     if (!disabled) {
-      console.log("Clicked");
+      //console.log("Clicked");
       handleChoice(card);
     }
   };
