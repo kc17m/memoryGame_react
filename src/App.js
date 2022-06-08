@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import SingleCard from './components/SingleCard';
-import BasicModal from './components/BasicModal';
 import GameOver from './components/GameOver';
 
 
