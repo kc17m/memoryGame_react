@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import SingleCard from './components/SingleCard';
 import BasicModal from './components/BasicModal';
+import GameOver from './components/GameOver';
+
 
 
 
@@ -117,7 +119,7 @@ function App() {
       </div>
       <p>Turns: {turns}</p>
       <p>Match: {matches}</p>
-      {matches === 6 && <BasicModal turns={turns} />}
+      {matches === 6 && <GameOver turns={turns} shuffleCards={shuffleCards} />}
       
     </div>
   );
