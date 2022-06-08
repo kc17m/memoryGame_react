@@ -59,13 +59,14 @@ function App() {
        
 
        if (choiceOne.src === choiceTwo.src) {
-             console.log("match!")
+             console.log("match!!")
              setMatches(prevMatches => prevMatches + 1)
-             console.log("matches nr", matches)
+             console.log("matches count", matches)
+            
          setCards(prevCards => {
           return prevCards.map(card => {
             if (card.src === choiceOne.src) {
-              
+             
               return {...card, matched: true}
             } else {
               return card
@@ -89,6 +90,7 @@ function App() {
     setChoiceTwo(null)
     setTurns(prevTurns => prevTurns + 1)
     setDisabled(false)
+    
   }
   
 
@@ -111,6 +113,7 @@ function App() {
         ) )}
       </div>
       <p>Turns: {turns}</p>
+      <p>Matches: {matches}</p>
       {matches === 6 && <BasicModal turns={turns} />}
       
     </div>
