@@ -8,5 +8,11 @@
     padding: 10% 5%;
     border-radius: 5px;
     box-shadow: 2px 2px 10px rgb(133, 114, 114);
+    animation: myMove 5s;
     
+}
+
+@keyframes myMove {
+  from {top: 0px;}
+  to {top: 10%;}
 }
