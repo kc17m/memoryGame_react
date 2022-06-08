@@ -37,7 +37,8 @@ function App() {
     setChoiceTwo(null)
     setCards(shuffleCardsArr) //new array of duplicated, shuffled cards with id
     
-    setTurns(0)  // resets turns to 0 with click on New Game
+    setTurns(0) // resets turns to 0 with click on New Game
+    setMatches(0)  
   }
 
   // handle a choice and pass this down to SingleCard comp as prop
@@ -55,13 +56,13 @@ function App() {
   useEffect(() => {
     
     if (choiceOne && choiceTwo) {
-       setDisabled(true)
-       
+       setDisabled(true)      
 
        if (choiceOne.src === choiceTwo.src) {
              console.log("match!!")
              setMatches(prevMatches => prevMatches + 1)
-             console.log("matches count", matches)
+            
+             
             
          setCards(prevCards => {
           return prevCards.map(card => {
@@ -80,7 +81,8 @@ function App() {
          setTimeout(() => resetTurn(), 1000)
     }
  
-  }, [choiceOne, choiceTwo])
+  }, [choiceOne, choiceTwo, setMatches])
+   console.log("matches count", matches)
 
   console.log(cards);
 
@@ -90,6 +92,7 @@ function App() {
     setChoiceTwo(null)
     setTurns(prevTurns => prevTurns + 1)
     setDisabled(false)
+    
     
   }
   
@@ -113,7 +116,7 @@ function App() {
         ) )}
       </div>
       <p>Turns: {turns}</p>
-      <p>Matches: {matches}</p>
+      <p>Match: {matches}</p>
       {matches === 6 && <BasicModal turns={turns} />}
       
     </div>
